@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <title>Frontend Mentor | IP Address Tracker</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+
+      #mapid {
+        height: 10rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="big-title">IP Address Tracker</h1>
+  <form action="/" method="post">
+
+      <div class="input-div">
+        <div class="left-search-column">
+          <input class="input-text" type="text" name="domain" placeholder="Search for any IP address or domain">
+        </div>
+
+        <div class="right-search-column">
+          <button class="submit-button" type="submit" name="button"><img src="images/icon-arrow.svg" alt="arrow image"></button>
+        </div>
+      </div>
+</form>
+
+  <div class="information">
+    <div class="ip-address">
+      <span class="information-title">IP ADDRESS</span>
+      <span class="information-description"><%= ipadd  %></span>
+    </div>
+
+    <div class="location">
+      <span class="information-title">LOCATION</span>
+      <span class="information-description"><%= cityName %> <%= regionName %> <%= postalNumber %></span>
+    </div>
+
+    <div class="timezone">
+      <span class="information-title">TIMEZONE</span>
+      <span class="information-description"><%= UTCTime %></span>
+    </div>
+
+    <div class="isp">
+      <span class="information-title">ISP</span>
+      <span class="information-description"><%= internetService %></span>
+    </div>
+  </div>
+
+
+  <!--map - section-->
+
+  <div id="mapid"></div>
+
+  <!--map section-->
+
+
+  <!-- add offset value dynamically using the API -->
+  <script type="text/javascript">
+  var mymap = L.map('mapid').setView([<%= latNumber%>, <%= longNumber %>], 13);
+  var blackIcon = L.icon({
+    iconUrl: "images/icon-location.svg",
+    iconSize: [35, 48],
+  });
+
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+    maxZoom: 18,
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1
+  }).addTo(mymap);
+  var marker = L.marker([<%= latNumber%>, <%= longNumber %>], {icon: blackIcon}).addTo(mymap);
+
+  </script>
+
+  <!--  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+  </div>-->
+
+
+</body>
+
+</html>

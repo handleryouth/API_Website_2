@@ -1,0 +1,108 @@
+body{
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  background-image:url('../images/pattern-bg.png');
+  position: relative;
+}
+
+/*first page*/
+.big-title{
+  text-align: center;
+  color: white;
+}
+
+/*first page*/
+.input-div{
+  display: flex;
+  justify-content: center;
+}
+/*input section*/
+
+.left-search-column{
+  width:68%;
+}
+.input-text{
+  height:3rem;
+  width:100%;
+  padding-right: 5px;
+  box-sizing: border-box;
+  border-radius: 10px 0 0 10px;
+}
+
+.submit-button{
+  height:3rem;
+  width:3rem;
+  box-sizing: border-box;
+  background-color: black;
+  border-radius: 0 10px 10px 0;
+}
+
+/*input section*/
+
+/*information*/
+.information{
+  background-color: white;
+  text-align: center;
+  padding: 1rem 0;
+  border-radius: 5px;
+  width:80%;
+  margin: 0 auto;
+  z-index: 1;
+  position: absolute;
+  right: 10%;
+  top: 8rem;
+}
+
+.information-title, .information-description{
+  display:block;
+}
+
+.information-title{
+  color: hsl(0, 0%, 59%);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  font-weight:700;
+  margin: 0.8rem 0;
+}
+
+.information-description{
+  font-weight: 500;
+}
+
+/*information*/
+
+
+
+
+/*map configuration*/
+#mapid{
+   width: 100%;
+   height: 40rem;
+   margin-top:16rem;
+   position: relative;
+   z-index: 0;
+}
+
+/*map configuration*/
+
+
+@media(min-width:1440px){
+  .information{
+    display: flex;
+    align-items: center;
+    height:7rem;
+    border-radius: 10px;
+  }
+
+  .ip-address, .location, .timezone, .isp{
+    flex-basis: 25%;
+  }
+
+  .ip-address, .location, .timezone{
+    border-right: 4px solid lightgray;
+  }
+
+  #mapid{
+    margin-top: 8rem;
+  }
+}
