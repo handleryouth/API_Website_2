@@ -19,7 +19,7 @@ app.get("/", function(req, res) {
 
 app.post("/", function(req, res) {
   var targetDomain = req.body.domain; /*ip address*/
-  var APIKEY = "at_pnd4iY9BCcXrWO3KpVEClzYu3lx03";
+/*  var APIKEY = {YOUR API KEY};*/
   const url = "https://geo.ipify.org/api/v1?apiKey=" + APIKEY + "&ipAddress=" + targetDomain;
 
   https.get(url, function(reponse) {
